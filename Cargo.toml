@@ -1,0 +1,6 @@
+[package]
+name = "checkers"
+version = "0.1.0"
+authors = ["Sebastian Motraghi <sebm@users.noreply.github.com>"]
+
+[dependencies]
