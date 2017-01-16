@@ -61,6 +61,6 @@ fn main() {
             BoardSquare::ManWhite, BoardSquare::Empty,BoardSquare::ManWhite, BoardSquare::Empty ],
     ];
 
-    draw_board();
+    draw_board(board);
 
 }
