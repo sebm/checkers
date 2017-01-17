@@ -58,13 +58,19 @@ fn available_moves(board: &[[BoardSquare; 8]; 8], x: usize, y: usize) -> Vec<(us
     return moves;
 }
 
+fn update_board(board: &mut [[BoardSquare; 8]; 8], start_coords: (usize, usize), end_coords: (usize, usize) ) {
+    let start_piece = board[start_coords.0][start_coords.1];
+    board[start_coords.0][start_coords.1] = BoardSquare::Empty;
+    board[end_coords.0][end_coords.1] = start_piece;
+}
+
 fn main() {
 
-    let board = board::one_piece_board();
-
-    draw_board(&board);
+    let mut board = board::one_piece_board();
 
     loop {
+        draw_board(&board);
+
         let mut who_to_move = String::new();
         println!("> who do you want to move?");
         io::stdin()
@@ -81,6 +87,19 @@ fn main() {
         println!("> who's at {} {}?", x, y);
         let moves = available_moves(&board, x, y);
         println!("> legal moves are {:?}", moves);
+        println!("> which move are you gonna make?");
+        for (i, item) in moves.iter().enumerate() {
+            println!("{}> {:?}", i, item);
+        }
+        let mut where_to_move = String::new();
+        io::stdin()
+            .read_line(&mut where_to_move)
+            .expect("failed to read line");
+
+        let move_index = where_to_move.trim().parse::<usize>().expect("should be int");
+        println!("you picked {:?}!", moves[move_index]);
+
+        update_board(&mut board, (x, y), moves[move_index]);
     }
 
 }
