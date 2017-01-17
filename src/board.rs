@@ -1,4 +1,6 @@
 use std::fmt;
+
+#[derive(Debug, Copy, Clone)]
 pub enum BoardSquare {
     Empty,
     ManWhite,
@@ -83,6 +85,23 @@ pub fn initial_board() -> [[BoardSquare; 8]; 8] {
              BoardSquare::Empty,
              BoardSquare::ManWhite,
              BoardSquare::Empty]];
+}
+
+pub fn one_piece_board() -> [[BoardSquare; 8]; 8] {
+    let mut board = [
+        [BoardSquare::Empty; 8],
+        [BoardSquare::Empty; 8],
+        [BoardSquare::Empty; 8],
+        [BoardSquare::Empty; 8],
+        [BoardSquare::Empty; 8],
+        [BoardSquare::Empty; 8],
+        [BoardSquare::Empty; 8],
+        [BoardSquare::Empty; 8],
+    ];
+
+    board[0][1] = BoardSquare::ManRed;
+
+    return board;
 }
 
 pub fn draw_board(board: &[[BoardSquare; 8]; 8]) {

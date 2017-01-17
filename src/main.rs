@@ -11,18 +11,50 @@ fn available_moves(board: &[[BoardSquare; 8]; 8], x: usize, y: usize) {
             println!("> white man");
             if y > 0 {
                 println!("> gonna check {} {}", x - 1, y - 1);
+                match board[x-1][y-1] {
+                    BoardSquare::Empty => {
+                        println!("its empty you can move there");
+                    },
+                    _ => {
+                        println!("TODO implement this later");
+                    }
+                }
             }
             if y < 7 {
                 println!("> gonna check {} {}", x - 1, y + 1);
+                match board[x-1][y+1] {
+                    BoardSquare::Empty => {
+                        println!("its empty you can move there");
+                    },
+                    _ => {
+                        println!("TODO implement this later");
+                    }
+                }
             }
         }
         BoardSquare::ManRed => {
             println!("> red man");
             if y > 0 {
                 println!("> gonna check {} {}", x + 1, y - 1);
+                match board[x+1][y-1] {
+                    BoardSquare::Empty => {
+                        println!("its empty you can move there");
+                    },
+                    _ => {
+                        println!("TODO implement this later");
+                    }
+                }
             }
             if y < 7 {
                 println!("> gonna check {} {}", x + 1, y + 1);
+                match board[x+1][y+1] {
+                    BoardSquare::Empty => {
+                        println!("its empty you can move there");
+                    },
+                    _ => {
+                        println!("TODO implement this later");
+                    }
+                }
             }
         }
 
@@ -31,7 +63,7 @@ fn available_moves(board: &[[BoardSquare; 8]; 8], x: usize, y: usize) {
 
 fn main() {
 
-    let board = initial_board();
+    let board = board::one_piece_board();
 
     draw_board(&board);
 
