@@ -9,13 +9,19 @@ fn available_moves(board: &[[BoardSquare; 8]; 8], x: usize, y: usize) {
         BoardSquare::Empty => println!("> nobody there!"),
         BoardSquare::ManWhite => {
             println!("> white man");
+            if y > 0 {
+                println!("> gonna check {} {}", x - 1, y - 1);
+            }
+            if y < 7 {
+                println!("> gonna check {} {}", x - 1, y + 1);
+            }
         }
         BoardSquare::ManRed => {
             println!("> red man");
-            if (y > 0) {
+            if y > 0 {
                 println!("> gonna check {} {}", x + 1, y - 1);
             }
-            if (y < 7) {
+            if y < 7 {
                 println!("> gonna check {} {}", x + 1, y + 1);
             }
         }
