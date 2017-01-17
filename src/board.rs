@@ -45,22 +45,8 @@ pub fn initial_board() -> [[BoardSquare; 8]; 8] {
              BoardSquare::ManRed,
              BoardSquare::Empty,
              BoardSquare::ManRed],
-            [BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty],
-            [BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty,
-             BoardSquare::Empty],
+            [BoardSquare::Empty; 8],
+            [BoardSquare::Empty; 8],
             [BoardSquare::ManWhite,
              BoardSquare::Empty,
              BoardSquare::ManWhite,
@@ -88,16 +74,7 @@ pub fn initial_board() -> [[BoardSquare; 8]; 8] {
 }
 
 pub fn one_piece_board() -> [[BoardSquare; 8]; 8] {
-    let mut board = [
-        [BoardSquare::Empty; 8],
-        [BoardSquare::Empty; 8],
-        [BoardSquare::Empty; 8],
-        [BoardSquare::Empty; 8],
-        [BoardSquare::Empty; 8],
-        [BoardSquare::Empty; 8],
-        [BoardSquare::Empty; 8],
-        [BoardSquare::Empty; 8],
-    ];
+    let mut board = [[BoardSquare::Empty; 8]; 8];
 
     board[0][1] = BoardSquare::ManRed;
 
