@@ -3,62 +3,59 @@ use std::io;
 mod board;
 use board::{BoardSquare, initial_board, draw_board};
 
-fn available_moves(board: &[[BoardSquare; 8]; 8], x: usize, y: usize) {
+fn available_moves(board: &[[BoardSquare; 8]; 8], x: usize, y: usize) -> Vec<(usize, usize)> {
+    let mut moves = Vec::new();
     let ref piece = board[x][y];
     match *piece {
-        BoardSquare::Empty => println!("> nobody there!"),
+        BoardSquare::Empty => return moves,
         BoardSquare::ManWhite => {
-            println!("> white man");
             if y > 0 {
-                println!("> gonna check {} {}", x - 1, y - 1);
                 match board[x-1][y-1] {
                     BoardSquare::Empty => {
-                        println!("its empty you can move there");
+                        moves.push((x-1, y-1))
                     },
                     _ => {
-                        println!("TODO implement this later");
+                        // TODO implement later
                     }
                 }
             }
             if y < 7 {
-                println!("> gonna check {} {}", x - 1, y + 1);
                 match board[x-1][y+1] {
                     BoardSquare::Empty => {
-                        println!("its empty you can move there");
+                        moves.push((x-1, y+1));
                     },
                     _ => {
-                        println!("TODO implement this later");
+                        // TODO implement later
                     }
                 }
             }
         }
         BoardSquare::ManRed => {
-            println!("> red man");
             if y > 0 {
-                println!("> gonna check {} {}", x + 1, y - 1);
                 match board[x+1][y-1] {
                     BoardSquare::Empty => {
-                        println!("its empty you can move there");
+                        moves.push((x+1, y-1));
                     },
                     _ => {
-                        println!("TODO implement this later");
+                        // TODO implement later
                     }
                 }
             }
             if y < 7 {
-                println!("> gonna check {} {}", x + 1, y + 1);
                 match board[x+1][y+1] {
                     BoardSquare::Empty => {
-                        println!("its empty you can move there");
+                        moves.push((x+1, y+1));
                     },
                     _ => {
-                        println!("TODO implement this later");
+                        // TODO implement later
                     }
                 }
             }
         }
 
     }
+
+    return moves;
 }
 
 fn main() {
@@ -82,7 +79,8 @@ fn main() {
         let y = coordinates[1];
 
         println!("> who's at {} {}?", x, y);
-        available_moves(&board, x, y);
+        let moves = available_moves(&board, x, y);
+        println!("> legal moves are {:?}", moves);
     }
 
 }
