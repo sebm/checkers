@@ -69,6 +69,7 @@ fn main() {
     let mut board = board::one_piece_board();
 
     loop {
+
         draw_board(&board);
 
         let mut who_to_move = String::new();

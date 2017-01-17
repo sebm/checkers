@@ -82,18 +82,24 @@ pub fn one_piece_board() -> [[BoardSquare; 8]; 8] {
 }
 
 pub fn draw_board(board: &[[BoardSquare; 8]; 8]) {
-    print!("╔");
+    print!("    ");
+    for i in 0..8 {
+        print!("{}   ", i);
+    }
+
+    print!("\n  ╔");
     for _ in 0..7 {
         print!("═══╦");
     }
     print!("═══╗\n");
-    for row in board.iter() {
+    for (i, row) in board.iter().enumerate() {
+        print!("{} ", i);
         for square in row.iter() {
             print!("║ {} ", square);
         }
-        print!("║\n");
+        print!("║{}\n", i);
     }
-    print!("╚");
+    print!("  ╚");
     for _ in 0..7 {
         print!("═══╩");
     }
