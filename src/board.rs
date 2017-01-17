@@ -84,3 +84,22 @@ pub fn initial_board() -> [[BoardSquare; 8]; 8] {
                   BoardSquare::ManWhite,
                   BoardSquare::Empty]];
 }
+
+pub fn draw_board(board: &[[BoardSquare; 8]; 8]) {
+    print!("╔");
+    for _ in 0..7 {
+        print!("═══╦");
+    }
+    print!("═══╗\n");
+    for row in board.iter() {
+        for square in row.iter() {
+            print!("║ {} ", square);
+        }
+        print!("║\n");
+    }
+    print!("╚");
+    for _ in 0..7 {
+        print!("═══╩");
+    }
+    print!("═══╝\n");
+}

@@ -1,7 +1,7 @@
 use std::io;
 
 mod board;
-use board::BoardSquare;
+use board::{BoardSquare, initial_board, draw_board};
 
 fn available_moves(board: &[[BoardSquare; 8]; 8], x: usize, y: usize) {
     let ref piece = board[x][y];
@@ -23,29 +23,9 @@ fn available_moves(board: &[[BoardSquare; 8]; 8], x: usize, y: usize) {
     }
 }
 
-fn draw_board(board: &[[BoardSquare; 8]; 8]) {
-    print!("╔");
-    for _ in 0..7 {
-        print!("═══╦");
-    }
-    print!("═══╗\n");
-    for row in board.iter() {
-        for square in row.iter() {
-            print!("║ {} ", square);
-        }
-        print!("║\n");
-    }
-    print!("╚");
-    for _ in 0..7 {
-        print!("═══╩");
-    }
-    print!("═══╝\n");
-
-}
-
 fn main() {
 
-    let board = board::initial_board();
+    let board = initial_board();
 
     draw_board(&board);
 
