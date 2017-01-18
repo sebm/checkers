@@ -1,11 +1,12 @@
 use std::fmt;
 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub enum BoardSquare {
     Empty,
     ManWhite,
-    ManRed, /* KingWhite,
-             * KingRed */
+    ManRed, 
+    KingWhite,
+    KingRed
 }
 
 impl fmt::Display for BoardSquare {
@@ -13,6 +14,8 @@ impl fmt::Display for BoardSquare {
         let x = match *self {
             BoardSquare::ManWhite => "w",
             BoardSquare::ManRed => "r",
+            BoardSquare::KingWhite => "W",
+            BoardSquare::KingRed => "R",
             BoardSquare::Empty => " ",
         };
 
@@ -76,7 +79,7 @@ pub fn initial_board() -> [[BoardSquare; 8]; 8] {
 pub fn one_piece_board() -> [[BoardSquare; 8]; 8] {
     let mut board = [[BoardSquare::Empty; 8]; 8];
 
-    board[0][1] = BoardSquare::ManRed;
+    board[6][6] = BoardSquare::ManRed;
 
     return board;
 }
