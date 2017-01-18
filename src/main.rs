@@ -87,6 +87,10 @@ fn main() {
 
         println!("> who's at {} {}?", x, y);
         let moves = available_moves(&board, x, y);
+        if (moves.len() == 0) {
+            println!("> no legal moves!");
+            continue;
+        }
         println!("> legal moves are {:?}", moves);
         println!("> which move are you gonna make?");
         for (i, item) in moves.iter().enumerate() {
